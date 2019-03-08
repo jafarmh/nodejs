@@ -12,23 +12,23 @@
      <label class="col-form-label col-form-label-lg mb-3  text-info" for="name">
        <i class="fas fa-user-plus"></i> Add New
      </label>
-     <input class="form-control form-control-lg" type="text" placeholder="Name" id="name" name='name'>
+     <input class="form-control form-control-lg require" type="text" placeholder="Name" id="name" name='name'>
     </div>
     <div class="form-group">
 
-     <input class="form-control form-control-lg" type="email" placeholder="Email" name='email' id="email">
+     <input class="form-control form-control-lg require" type="email" placeholder="Email" name='email' id="email">
     </div>
     <div class="form-group">
 
-     <input class="form-control form-control-lg" type="text" placeholder="Password" name='Password' id="Password">
+     <input class="form-control form-control-lg require" type="text" placeholder="Password" name='Password' id="Password">
     </div>
     <div class="form-group">
 
-     <input class="form-control form-control-lg" type="text" placeholder="Password again" name='Password_again' id="Password_again">
+     <input class="form-control form-control-lg require" type="text" placeholder="Password again" name='Password_again' id="Password_again">
     </div>
 
      <div class="form-group">
-     <button type="button" onclick="register_frm()" class="btn btn-success">Register</button>
+     <button type="button" id="registers" onclick="register_frm()" class="btn btn-success">Register</button>
      <a href="/" class="btn btn-danger">Go To Login</a>
      </div>
    </div>
@@ -39,4 +39,5 @@
 
  </div>
  </form>
+
 <% include ./register.js %>
