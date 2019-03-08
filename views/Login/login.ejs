@@ -31,19 +31,19 @@
    <div class="col align-self-center">
     <div class="form-group">
      <label class="col-form-label col-form-label-lg mb-3  text-info" for="username"><i class="fas fa-user-alt"></i> Login To Your Account</label>
-     <input class="form-control form-control-lg" type="text" placeholder="User Name" id="username" name='username'>
+     <input class="form-control form-control-lg require" type="text" placeholder="Email" id="email" name='email'>
     </div>
     <div class="form-group">
 
-     <input class="form-control form-control-lg" type="password" placeholder="Password" name='Password' id="Password">
+     <input class="form-control form-control-lg require" type="password" placeholder="Password" name='Password' id="Password">
     </div>
     <div class="form-group ">
      <div id="captcha">
      </div>
-      <input style="width: 100%;" class="form-control form-control-lg" type="text" placeholder="Captcha" name="capcha" id="cpatchaTextBox"/>
+      <input style="width: 100%;" class="form-control form-control-lg require" type="text" placeholder="Captcha" name="capcha" id="cpatchaTextBox"/>
      </div>
      <div class="form-group">
-     <button type="button" onclick="submited_frm()" class="btn btn-success">Login</button>
+     <button type="button" id="logins" onclick="submited_frm()" class="btn btn-success">Login</button>
      <a href="/register" class="btn btn-info">Register Now</a>
      </div>
    </div>

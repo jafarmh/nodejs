@@ -1,5 +1,7 @@
 const express=require('express');
 const Login = express.Router();
+const MongoClient = require('mongodb').MongoClient;
+const mongourl=require ('../config/mongodb');
 ///use session
 const session= require('express-session');
 Login.use(session({secret: "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"}));
@@ -12,21 +14,36 @@ Login.get("/",(req,res)=>{
 
 /// set session for capcha
 Login.post("/singel_page/capcha",(req,res)=>{
-
   req.session.capcha =req.body.captcha.toString();
   res.status("200").send( `ok:${req.session.capcha}`);
 });
 ////Login
 Login.post("/login",(req,res)=>{
+  console.log(req.session.capcha);
   if (!req.session.capcha)
   {
       res.status("500").send( `capcha is require`);
   }
   var obj=req.body;
-  var result = Object.keys(obj).map(function(key) {
-    return [(key), obj[key]];
-  });
-  res.status("200").send( `ok:${result}`);
+  const  myobj = { email: obj.email,password:obj.Password };
+  MongoClient.connect(mongourl,{ useNewUrlParser: true })
+  .then((db) => {
+    var dbo = db.db("mydb");
+
+    dbo.collection('users').findOne(myobj)
+    .then((response)=>{
+      if(!response)
+        {
+          res.status("500").send("user not found!");
+        }
+        else {
+        res.send("/user/all");
+        }
+    });
+  })
+  .catch((err)=>{
+    console.log(err);
+  })
 });
 
 

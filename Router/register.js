@@ -1,7 +1,7 @@
 const express=require('express');
 const Register = express.Router();
 const MongoClient = require('mongodb').MongoClient;
-
+const mongourl=require ('../config/mongodb');
 ///show Register view
 Register.get("/register",(req,res)=>{
     res.render("../views/Register/register");
@@ -9,9 +9,9 @@ Register.get("/register",(req,res)=>{
 
 ///insert User
 let trues='';
-const mongourl=require ('../config/mongodb');
+
 Register.post("/register/user/add",(req,res) =>{
-  const  myobj = { name: req.body.name, email: req.body.email,password:req.body.Password };
+const  myobj = { name: req.body.name, email: req.body.email,password:req.body.Password };
 
 
 MongoClient.connect(mongourl,{ useNewUrlParser: true })

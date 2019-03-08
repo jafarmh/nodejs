@@ -22,6 +22,9 @@ app.use(Login);
 ///register
 var Register=require("./Router/register.js");
 app.use(Register);
+//users
+var user=require("./Router/user.js");
+app.use(user);
 //// set 404 message
 app.use(function(req, res, next) {
 

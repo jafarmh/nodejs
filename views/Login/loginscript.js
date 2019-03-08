@@ -37,12 +37,25 @@ $("document").ready(function () {
           type:"post",
           async:false,
           data:{
-              captcha:captcha
+              captcha:captcha.toString()
           }
       });
 
    }
    function submited_frm(){
+     let btn=$("#logins");
+     btn.prop("disabled",true);
+     validateCaptcha();
+     if(!validation()){
+       toastr.error("somting is empty");
+         btn.prop("disabled",false);
+         return false;
+     }
+     if (!validateEmail($("#email").val())) {
+       toastr.error("email is Wrong !");
+         btn.prop("disabled",false);
+         return false;
+     }
      let Forms=$("#login_frm").serializeArray();
      $.ajax({
          url:"/login",
@@ -51,9 +64,30 @@ $("document").ready(function () {
          data:Forms,
          success:function(data)
          {
-
+           btn.prop("disabled",false);
+           location.href=data;
+         },error:function (data)
+         {
+           toastr.error(data.responseText);
+           btn.prop("disabled",false);
          }
      });
+   }
+   function validateCaptcha() {
+       event.preventDefault();
+       if (document.getElementById("cpatchaTextBox").value == code) {
+           captcha=true;
+       }else{
+           captcha=false;
+           createCaptcha();
+           document.getElementById("cpatchaTextBox").value="";
+       }
+   }
+   function validation(){
+     if (check_other("require")) {
+       return false;
+     }
+     return true;
    }
    function rest_frm(){
      let form=$("#login_frm");

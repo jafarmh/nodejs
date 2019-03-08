@@ -1,5 +1,6 @@
 <script>
     function check_other(name){
+
         var dd=$("."+name);
         if (dd.length===0)
             return false;
