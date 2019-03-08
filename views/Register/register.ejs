@@ -1,0 +1,42 @@
+
+<% extend('../layout') %>
+
+
+ <form id=register_frm>
+ <div onload="createCaptcha()" class="row">
+   <div class="col align-self-start">
+
+   </div>
+   <div class="col align-self-center">
+    <div class="form-group">
+     <label class="col-form-label col-form-label-lg mb-3  text-info" for="name">
+       <i class="fas fa-user-plus"></i> Add New
+     </label>
+     <input class="form-control form-control-lg" type="text" placeholder="Name" id="name" name='name'>
+    </div>
+    <div class="form-group">
+
+     <input class="form-control form-control-lg" type="email" placeholder="Email" name='email' id="email">
+    </div>
+    <div class="form-group">
+
+     <input class="form-control form-control-lg" type="text" placeholder="Password" name='Password' id="Password">
+    </div>
+    <div class="form-group">
+
+     <input class="form-control form-control-lg" type="text" placeholder="Password again" name='Password_again' id="Password_again">
+    </div>
+
+     <div class="form-group">
+     <button type="button" onclick="register_frm()" class="btn btn-success">Register</button>
+     <a href="/" class="btn btn-danger">Go To Login</a>
+     </div>
+   </div>
+
+   <div class="col align-self-end">
+
+   </div>
+
+ </div>
+ </form>
+<% include ./register.js %>

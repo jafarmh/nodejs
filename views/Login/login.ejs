@@ -1,0 +1,57 @@
+
+<% extend('../layout') %>
+<style media="screen">
+  input[type=text] {
+  padding: 12px 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  }
+  button{
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  }
+  canvas{
+  /*prevent interaction with the canvas*/
+  pointer-events:none;
+  }
+</style>
+
+ <form id=login_frm>
+ <div onload="createCaptcha()" class="row">
+   <div class="col align-self-start">
+
+   </div>
+   <div class="col align-self-center">
+    <div class="form-group">
+     <label class="col-form-label col-form-label-lg mb-3  text-info" for="username"><i class="fas fa-user-alt"></i> Login To Your Account</label>
+     <input class="form-control form-control-lg" type="text" placeholder="User Name" id="username" name='username'>
+    </div>
+    <div class="form-group">
+
+     <input class="form-control form-control-lg" type="password" placeholder="Password" name='Password' id="Password">
+    </div>
+    <div class="form-group ">
+     <div id="captcha">
+     </div>
+      <input style="width: 100%;" class="form-control form-control-lg" type="text" placeholder="Captcha" name="capcha" id="cpatchaTextBox"/>
+     </div>
+     <div class="form-group">
+     <button type="button" onclick="submited_frm()" class="btn btn-success">Login</button>
+     <a href="/register" class="btn btn-info">Register Now</a>
+     </div>
+   </div>
+
+   <div class="col align-self-end">
+
+   </div>
+
+ </div>
+ </form>
+<% include ./loginscript.js %>
