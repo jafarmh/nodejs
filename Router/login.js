@@ -7,9 +7,12 @@ const session= require('express-session');
 Login.use(session({secret: "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"}));
 ///show login view
 Login.get("/",(req,res)=>{
-    res.render("../views/login/login",{
-		fonts:true,
-	});
+
+    res.render("../views/login/login");
+});
+ Login.get("/logout",(req,res)=>{
+ req.session.email=undefined;
+    res.redirect("/");
 });
 
 /// set session for capcha
@@ -37,6 +40,8 @@ Login.post("/login",(req,res)=>{
           res.status("500").send("user not found!");
         }
         else {
+          req.session.email=response.email;
+
         res.send("/user/all");
         }
     });
