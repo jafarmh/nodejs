@@ -13,7 +13,9 @@ app.engine('ejs', require('express-ejs-extend')); // add this line
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-
+///api
+let Users_api=require("./api/users.js");
+app.use(Users_api);
 ///Route start
 
 ///Login
